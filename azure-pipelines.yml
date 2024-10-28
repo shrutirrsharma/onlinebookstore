@@ -4,11 +4,12 @@ trigger:
 pool:
   name: Default
 
-stages: 
-- stage:
+stages:
+- stage: Build
   jobs:
-  - job:
+  - job: MavenBuild
     steps:
+    - checkout: self
     - task: Maven@4
       inputs:
         azureSubscription: 'Free Trial(5571e1cd-c152-4666-889b-580c92bd1832)'
@@ -22,4 +23,3 @@ stages:
         effectivePomSkip: false
         sonarQubeRunAnalysis: false
         spotBugsRunAnalysis: true
-
