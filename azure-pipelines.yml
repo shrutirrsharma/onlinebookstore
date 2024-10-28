@@ -1,0 +1,18 @@
+trigger:
+- main
+
+pool:
+  name: 'Default'
+
+steps:
+- task: Maven@4
+  inputs:
+    azureSubscription: 'Free Trial(1)(5571e1cd-c152-4666-889b-580c92bd1832)'
+    mavenPomFile: 'pom.xml'
+    publishJUnitResults: true
+    testResultsFiles: '**/surefire-reports/TEST-*.xml'
+    javaHomeOption: 'JDKVersion'
+    mavenVersionOption: 'Default'
+    mavenAuthenticateFeed: false
+    effectivePomSkip: false
+    sonarQubeRunAnalysis: false
