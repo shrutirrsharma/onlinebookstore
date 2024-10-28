@@ -1,24 +1,27 @@
 trigger:
 - main
 
-pool:
-  name: 'Default'  
+pool: 
+  name: default
+  demands: agent.name
+  vmImage: 'ubuntu-latest'  
 
-jobs:
-- job: BuildAndTest
-  pool:
-    name: 'Default'
-    # demands:
-    #   - agent.name -equals ScanVM  
-
-  steps:
-  - task: Maven@4
-    inputs:
-      azureSubscription: 'Free Trial(1)(5571e1cd-c152-4666-889b-580c92bd1832)'
-      mavenPomFile: 'pom.xml'
-      goals: 'package'
-      publishJUnitResults: true
-      testResultsFiles: '**/surefire-reports/TEST-*.xml'
-      javaHomeOption: 'JDKVersion'
-      mavenVersionOption: 'Default'
-      mavenAuthenticateFeed: false
+stages:
+- stage: 
+  jobs:
+  - job: 
+    steps:
+    - task: Maven@4
+      inputs:
+        azureSubscription: 'Free Trial(2)(5571e1cd-c152-4666-889b-580c92bd1832)'
+        mavenPomFile: 'pom.xml'
+        publishJUnitResults: true
+        testResultsFiles: '**/surefire-reports/TEST-*.xml'
+        javaHomeOption: 'Path'
+        jdkDirectory: '/root/java17/jdk-17.0.11'
+        mavenVersionOption: 'Path'
+        mavenDirectory: '/root/maven/apache-maven-3.9.9'
+        mavenSetM2Home: false
+        mavenAuthenticateFeed: false
+        effectivePomSkip: false
+        sonarQubeRunAnalysis: false
