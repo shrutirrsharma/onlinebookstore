@@ -1,10 +1,11 @@
 trigger:
 - main
 
-pool: 
-  name: default
-  demands: agent.name
-  vmImage: 'ubuntu-latest'
+pool:
+  name: Default
+  demands:
+    - maven
+    - agent.name -equals ScanVM
 
 stages: 
 - stage:
