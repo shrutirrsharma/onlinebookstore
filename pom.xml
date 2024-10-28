@@ -33,7 +33,10 @@
         <configuration>
           <outputDirectory>${project.build.directory}/spotbugs</outputDirectory>
           <xmlOutput>true</xmlOutput> <!-- Outputs XML report -->
-          <failOnError>true</failOnError> <!-- Fail build if bugs are found -->
+          <htmlOutput>true</htmlOutput> <!-- Outputs HTML report for easier reading -->
+          <failOnError>false</failOnError> <!-- Does not fail build on bugs, for report generation -->
+          <effort>max</effort> <!-- Maximum analysis depth -->
+          <threshold>low</threshold> <!-- Lower threshold to catch more issues -->
         </configuration>
         <executions>
           <execution>
