@@ -8,8 +8,8 @@ jobs:
 - job: BuildAndTest
   pool:
     name: 'Default'
-    demands:
-      - agent.name -equals ScanVM  
+    # demands:
+    #   - agent.name -equals ScanVM  
 
   steps:
   - task: Maven@4
