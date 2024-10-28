@@ -3,8 +3,6 @@ trigger:
 
 pool:
   name: Default
-  demands:
-    - agent.name -equals ubuntu-latest
 
 stages: 
 - stage:
