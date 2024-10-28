@@ -4,21 +4,19 @@ trigger:
 pool: 
   name: 'Default'
 
-stages:
-- stage: BuildAndTest
-  jobs:
-  - job: MavenBuild
-    pool: 
-      name: 'Default'
-      demands: 
-        - agent.name -equals ScanVM
-    steps:
-    - script: |
-        export JAVA_HOME=/root/java17/jdk-17.0.11
-        export PATH=$JAVA_HOME/bin:$PATH
-        export M2_HOME=/root/maven/apache-maven-3.9.9
-        export PATH=$M2_HOME/bin:$PATH
-        
-        # Run Maven commands
-        mvn clean install
-      displayName: 'Run Maven Build and Test'
+steps:
+- task: Maven@4
+  inputs:
+    azureSubscription: 'Free Trial(3)(5571e1cd-c152-4666-889b-580c92bd1832)'
+    mavenPomFile: 'pom.xml'
+    goals: 'clean package'
+    publishJUnitResults: true
+    testResultsFiles: '**/surefire-reports/TEST-*.xml'
+    javaHomeOption: 'Path'
+    jdkDirectory: '/usr/lib/jvm/java-17-openjdk-amd64'
+    mavenVersionOption: 'Path'
+    mavenDirectory: '/home/scanuser/maven/apache-maven-3.9.9'
+    mavenSetM2Home: true
+    mavenAuthenticateFeed: false
+    effectivePomSkip: false
+    sonarQubeRunAnalysis: false
