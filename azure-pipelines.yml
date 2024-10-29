@@ -7,7 +7,7 @@ pool:
 steps:
 - task: Maven@4
   inputs:
-    azureSubscription: 'Free Trial(5)(5571e1cd-c152-4666-889b-580c92bd1832)'
+    azureSubscription: 'Free Trial(6)(5571e1cd-c152-4666-889b-580c92bd1832)'
     mavenPomFile: 'pom.xml'
     goals: 'clean package spotbugs:spotbugs'
     publishJUnitResults: true
@@ -21,6 +21,7 @@ steps:
     effectivePomSkip: false
     sonarQubeRunAnalysis: false
     spotBugsRunAnalysis: true
+    spotBugsVersion: '4.8.6.5'
 
 - script: |
     echo "Listing files in target directory:"
