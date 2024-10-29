@@ -21,3 +21,9 @@ steps:
     effectivePomSkip: false
     sonarQubeRunAnalysis: false
     spotBugsRunAnalysis: true
+
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: '$(Pipeline.Workspace)/target/spotbugs'
+    artifact: 'SpotBugsReports'
+    publishLocation: 'pipeline'
