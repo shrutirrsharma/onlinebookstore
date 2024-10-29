@@ -22,6 +22,11 @@ steps:
     sonarQubeRunAnalysis: false
     spotBugsRunAnalysis: true
 
+- script: |
+    mkdir -p $(Pipeline.Workspace)/target/spotbugs
+    cp target/spotbugs/spotbugsXml.xml $(Pipeline.Workspace)/target/spotbugs/
+  displayName: 'Copy SpotBugs Report'
+
 - task: PublishPipelineArtifact@1
   inputs:
     targetPath: '$(Pipeline.Workspace)/target/spotbugs'
