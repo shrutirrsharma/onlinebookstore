@@ -19,6 +19,7 @@
           <target>1.7</target>
         </configuration>
       </plugin>
+
       <plugin>
         <artifactId>maven-war-plugin</artifactId>
         <version>3.2.1</version>
@@ -34,16 +35,17 @@
         <version>4.8.6.5</version>
         <configuration>
           <outputDirectory>${project.build.directory}/spotbugs</outputDirectory>
-          <xmlOutput>true</xmlOutput>  <!-- Outputs XML report -->
-          <htmlOutput>true</htmlOutput>  <!-- Outputs HTML report for easier reading -->
-          <failOnError>false</failOnError>  <!-- Does not fail build on bugs, for report generation -->
-          <effort>max</effort>  <!-- Maximum analysis depth -->
-          <threshold>low</threshold>  <!-- Lower threshold to catch more issues -->
+          <xmlOutput>true</xmlOutput>
+          <xmlOutputFile>${project.build.directory}/spotbugs/spotbugsXml.xml</xmlOutputFile>
+          <htmlOutput>true</htmlOutput>
+          <failOnError>false</failOnError>
+          <effort>max</effort>
+          <threshold>low</threshold>
         </configuration>
         <executions>
           <execution>
             <goals>
-              <goal>spotbugs</goal>  <!-- Use 'spotbugs' to generate the report -->
+              <goal>spotbugs</goal>
             </goals>
           </execution>
         </executions>
@@ -58,11 +60,13 @@
       <artifactId>postgresql</artifactId>
       <version>42.3.3</version>
     </dependency>
+
     <dependency>
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
       <version>8.0.16</version>
     </dependency>
+
     <dependency>
       <groupId>javax.servlet</groupId>
       <artifactId>javax.servlet-api</artifactId>
