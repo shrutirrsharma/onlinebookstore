@@ -9,7 +9,7 @@ steps:
   inputs:
     azureSubscription: 'Free Trial(5)(5571e1cd-c152-4666-889b-580c92bd1832)'
     mavenPomFile: 'pom.xml'
-    goals: 'clean package'
+    goals: 'clean package spotbugs:spotbugs'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     javaHomeOption: 'Path'
@@ -21,6 +21,11 @@ steps:
     effectivePomSkip: false
     sonarQubeRunAnalysis: false
     spotBugsRunAnalysis: true
+
+- script: |
+    echo "Listing files in target directory:"
+    ls -R target
+  displayName: 'Verify SpotBugs Output Directory'
 
 - script: |
     mkdir -p $(Pipeline.Workspace)/target/spotbugs
