@@ -7,7 +7,7 @@ pool:
 steps:
 - task: Maven@4
   inputs:
-    azureSubscription: 'Free Trial(3)(5571e1cd-c152-4666-889b-580c92bd1832)'
+    azureSubscription: 'Free Trial(5)(5571e1cd-c152-4666-889b-580c92bd1832)'
     mavenPomFile: 'pom.xml'
     goals: 'clean package'
     publishJUnitResults: true
@@ -20,3 +20,4 @@ steps:
     mavenAuthenticateFeed: false
     effectivePomSkip: false
     sonarQubeRunAnalysis: false
+    spotBugsRunAnalysis: true
