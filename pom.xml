@@ -1,4 +1,6 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>onlinebookstore</groupId>
   <artifactId>onlinebookstore</artifactId>
@@ -24,7 +26,7 @@
           <warSourceDirectory>WebContent</warSourceDirectory>
         </configuration>
       </plugin>
-      
+
       <!-- SpotBugs Maven Plugin -->
       <plugin>
         <groupId>com.github.spotbugs</groupId>
@@ -32,16 +34,16 @@
         <version>4.8.6.5</version>
         <configuration>
           <outputDirectory>${project.build.directory}/spotbugs</outputDirectory>
-          <xmlOutput>true</xmlOutput> <!-- Outputs XML report -->
-          <htmlOutput>true</htmlOutput> <!-- Outputs HTML report for easier reading -->
-          <failOnError>false</failOnError> <!-- Does not fail build on bugs, for report generation -->
-          <effort>max</effort> <!-- Maximum analysis depth -->
-          <threshold>low</threshold> <!-- Lower threshold to catch more issues -->
+          <xmlOutput>true</xmlOutput>  <!-- Outputs XML report -->
+          <htmlOutput>true</htmlOutput>  <!-- Outputs HTML report for easier reading -->
+          <failOnError>false</failOnError>  <!-- Does not fail build on bugs, for report generation -->
+          <effort>max</effort>  <!-- Maximum analysis depth -->
+          <threshold>low</threshold>  <!-- Lower threshold to catch more issues -->
         </configuration>
         <executions>
           <execution>
             <goals>
-              <goal>check</goal>
+              <goal>spotbugs</goal>  <!-- Use 'spotbugs' to generate the report -->
             </goals>
           </execution>
         </executions>
@@ -66,7 +68,7 @@
       <artifactId>javax.servlet-api</artifactId>
       <version>3.1.0</version>
     </dependency>
-    
+
     <!-- Optional SpotBugs Annotations -->
     <dependency>
       <groupId>com.github.spotbugs</groupId>
